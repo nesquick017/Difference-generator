@@ -1,19 +1,19 @@
 /* eslint-disable no-undef */
-import { flat } from '../__fixtures__/result.js';
+import { noFlat } from '../__fixtures__/result.js';
 import makeCompare from '../src/idex.js';
 import { getFile, getType } from '../src/idex.js';
 import fs from 'fs';
+import getString from '../src/formatters/stylish.js';
 
 const fileName1 = 'file1.json';
 const fileName2 = 'file2.json';
-const resultMakeCompare = flat;
 const resultGetFile = fs.readFileSync(
     '/Users/nikita_mac/Documents/frontend-project-46/__fixtures__/file1.json',
     'utf-8'
 );
 
 test('makeCompare should return the difference', () => {
-    expect(makeCompare(fileName1, fileName2)).toEqual(resultMakeCompare);
+    expect(getString(makeCompare(fileName1, fileName2))).toEqual(noFlat);
 });
 
 test('getType should give us a type of file', () => {
