@@ -3,7 +3,6 @@
 
 import { program } from 'commander';
 import makeCompare from '../src/idex.js';
-import { stringify } from '../src/formatters/stylish.js';
 import getString from '../src/formatters/stylish.js';
 program
     .version('1.0.0')
