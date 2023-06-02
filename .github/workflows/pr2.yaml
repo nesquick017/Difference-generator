@@ -1,33 +1,37 @@
-name: pr2
+name: Code Quality and Coverage
 on:
-    - push
-    - pull_request
-
-env:
-    CI: true
+    push:
+        branches:
+            - main
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [16.x]
+
         steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-            - run: make install
-            - run: make lint
-            - run: make test
-            - name: Test & publish code coverage
-              # Publish code coverage on Code Climate
-              # https://github.com/paambaati/codeclimate-action
-              uses: paambaati/codeclimate-action@v3.0.0
+                  node-version: 16
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Run lint
+              run: make lint
+
+            - name: Run tests
+              run: make test
+
+            - name: Generate coverage report
+              run: make test-coverage
+
+            - name: Publish coverage report to Code Climate
+              uses: paambaati/codeclimate-action@v3
               env:
-                  CC_TEST_REPORTER_ID: ${{CC_TEST_REPORTER_ID}}
+                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
               with:
-                  coverageCommand: make test-coverage
-                  debug: true
+                  coverageCommand: cat coverage/lcov.info
