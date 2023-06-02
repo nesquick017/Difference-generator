@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { flat } from '../__fixtures__/result.js';
 import makeCompare from '../src/idex.js';
 
