@@ -6,18 +6,15 @@ const spacesCount = 4;
 
 const getIndent = (depth) => replacer.repeat(depth * spacesCount).slice(0, -2);
 
-const stringify = (value, depth = 2) => {
+const stringify = (value, depth) => {
     if (!_.isPlainObject(value)) {
-        return String(value);
+      return String(value);
     }
-    const lines = Object.entries(value).map(
-        ([key, val]) =>
-            `${getIndent(depth)}${key}: ${stringify(val, depth + 1)}`
-    );
-    return `{\n${getIndent(depth)}${lines.join('\n')}\n${getIndent(
-        depth
-    )}${doubleSpace}}`;
-};
+    const lines = Object
+      .entries(value)
+      .map(([key, val]) => `${getIndent(depth + 1)}  ${key}: ${stringify(val, (depth + 1))}`);
+    return `{\n${lines.join('\n')}\n${getIndent(depth)}${doubleSpace}}`;
+  };
 
 export { stringify };
 
@@ -59,7 +56,7 @@ const getString = (obj) => {
                 }
             }
         });
-        return `{\n${result.join('\n')}\n${getIndent(depth - 1)}}`;
+        return `{\n${result.join('\n')}\n${getIndent(depth - 1)}${doubleSpace}}`;
     };
     return iter(obj, 1);
 };
