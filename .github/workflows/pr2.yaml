@@ -1,37 +1,36 @@
 name: project-check
 on: push
 jobs:
-  lint-job:
-    runs-on: ubuntu-latest
+    lint-job:
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
+        strategy:
+            matrix:
+                node-version: [18.x]
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+            - name: Install dependencies
+              run: npm ci
 
-      - name: installation
-        run: make install
+            - name: linting
+              run: make lint
 
-      - name: linting
-        run: make lint
+            - name: testing
+              run: make test
 
-      - name: testing
-        run: make test
-
-      - name: Test & publish code coverage
-        # Publish code coverage on Code Climate
-        # https://github.com/paambaati/codeclimate-action
-        uses: paambaati/codeclimate-action@v4.0.0
-        # Add Code Climate secret key
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+            - name: Test & publish code coverage
+              # Publish code coverage on Code Climate
+              # https://github.com/paambaati/codeclimate-action
+              uses: paambaati/codeclimate-action@v4.0.0
+              # Add Code Climate secret key
+              env:
+                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+              with:
+                  coverageCommand: make test-coverage
+                  debug: true
