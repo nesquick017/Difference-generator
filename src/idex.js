@@ -12,7 +12,6 @@ const getType = (filePath) => path.extname(filePath).slice(1);
 const getFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
 export { getFile, getType, getFixturePath };
 
-
 const makeCompare = (fileName1, fileName2) => {
     const path1 = getFixturePath(fileName1);
     const path2 = getFixturePath(fileName2);
@@ -20,4 +19,4 @@ const makeCompare = (fileName1, fileName2) => {
     const file2 = parser(getFile(path2), getType(path2));
     return buildTree(file1, file2);
 };
-export default makeCompare;
+export { makeCompare };
