@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "type": "module",
     "description": "difference generator",
-    "main": "src/index.js",
+    "main": "bim/gendiff.js",
     "scripts": {
         "test": "jest"
     },
