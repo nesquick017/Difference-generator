@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+import { test, expect } from '@jest/globals';
 import { noFlat } from '../__fixtures__/result.js';
 import { getType, getFixturePath, getFile } from '../src/idex.js';
 import { fileURLToPath } from 'url';
@@ -7,12 +7,15 @@ import makeCompare from '../src/idex.js';
 import path from 'path';
 import getString from '../src/formatters/stylish.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const expectedPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    '..',
+    '__fixtures__',
+    'file1.json'
+);
 const file1 = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
 
 test('returns the correct fixture path', () => {
-    const expectedPath = path.join(__dirname, '..', '__fixtures__', 'file1.json');
     expect(getFixturePath('file1.json')).toBe(expectedPath);
 });
 
