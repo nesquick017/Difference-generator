@@ -7,12 +7,7 @@ import makeCompare from '../src/idex.js';
 import path from 'path';
 import getString from '../src/formatters/stylish.js';
 
-const expectedPath = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    '..',
-    '__fixtures__',
-    'file1.json'
-);
+const expectedPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.json');
 const file1 = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
 
 test('returns the correct fixture path', () => {
