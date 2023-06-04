@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
-import { fileURLToPath } from 'url';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 import parser from './parser.js';
+import { fileURLToPath } from 'url';
 import buildTree from './comparer.js';
+import formatter from './formatters/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,11 +13,10 @@ const getType = (filePath) => path.extname(filePath).slice(1);
 const getFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
 export { getFile, getType, getFixturePath };
 
-const makeCompare = (fileName1, fileName2) => {
-    const path1 = getFixturePath(fileName1);
-    const path2 = getFixturePath(fileName2);
-    const file1 = parser(getFile(path1), getType(path1));
-    const file2 = parser(getFile(path2), getType(path2));
-    return buildTree(file1, file2);
+const genDifference = (fileName1, fileName2, format = 'stylish') => {
+    const file1 = parser(getFile(getFixturePath(fileName1)), getType(getFixturePath(fileName1)));
+    const file2 = parser(getFile(getFixturePath(fileName2)), getType(getFixturePath(fileName1)));
+    return formatter(buildTree(file1, file2), format);
 };
-export { makeCompare };
+
+export default genDifference;

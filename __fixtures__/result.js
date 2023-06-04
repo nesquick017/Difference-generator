@@ -1,11 +1,3 @@
-const flat = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
 const noFlat = `{
     common: {
       + follow: false
@@ -50,4 +42,4 @@ const noFlat = `{
         fee: 100500
     }
 }`;
-export { flat, noFlat };
+export default noFlat;

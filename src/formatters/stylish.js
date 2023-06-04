@@ -14,9 +14,7 @@ const stringify = (value, depth) => {
     return `{\n${lines.join('\n')}\n${getIndent(depth)}${doubleSpace}}`;
 };
 
-export { stringify };
-
-const getString = (obj) => {
+const stylish = (obj) => {
     const iter = (element, depth = 1) => {
         const result = element.map((node) => {
             switch (node.type) {
@@ -44,4 +42,4 @@ const getString = (obj) => {
     };
     return iter(obj, 1);
 };
-export default getString;
+export { stringify, stylish };
