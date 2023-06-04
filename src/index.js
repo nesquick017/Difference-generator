@@ -13,10 +13,8 @@ const getType = (filePath) => path.extname(filePath).slice(1);
 const getFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
 export { getFile, getType, getFixturePath };
 
-const genDifference = (fileName1, fileName2, format = 'stylish') => {
+export default function genDifference(fileName1, fileName2, format = 'stylish') {
     const file1 = parser(getFile(getFixturePath(fileName1)), getType(getFixturePath(fileName1)));
     const file2 = parser(getFile(getFixturePath(fileName2)), getType(getFixturePath(fileName1)));
     return formatter(buildTree(file1, file2), format);
-};
-
-export default genDifference;
+}

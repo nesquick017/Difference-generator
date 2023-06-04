@@ -1,4 +1,4 @@
-import { stylish } from './stylish.js';
+import stylish from '../formatters/stylish.js';
 
 const formatter = (data, format) => {
     switch (format) {
