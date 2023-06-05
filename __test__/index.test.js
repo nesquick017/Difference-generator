@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import parser from '../src/parser.js';
 import { test, expect } from '@jest/globals';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
-import { resStylish, resJSON, resPlain } from '../__fixtures__/result.js';
+import { resStylish, resPlain, resJSON } from '../__fixtures__/result.js';
 
 const expectedPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.json');
 const fileJson = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
@@ -32,7 +32,8 @@ test('getFixturePath should return the correct fixture path', () => {
     expect(getFixturePath('file1.json')).toBe(expectedPath);
 });
 
-test('gendiff --format plain should return correct result depends on format', () => {
-    expect(genDifference('file1.json', 'file2.json', 'plain')).toEqual(resPlain);
-    expect(genDifference('file1.json', 'file2.json')).toEqual(resStylish);
+test('gendiff --format plain should return correct result depends on format and extension', () => {
+    expect(genDifference('file1.yml', 'file2.yml')).toEqual(resStylish);
+    expect(genDifference('file1.json', 'file2.json', 'json')).toEqual(resJSON);
+    expect(genDifference('file1.yaml', 'file2.yaml', 'plain')).toEqual(resPlain);
 });
