@@ -2,27 +2,24 @@
 import _ from 'lodash';
 
 export default function getComparison(obj1, obj2) {
-    const keys = _.union(_.keys(obj1), _.keys(obj2));
-    const sortedKeys = _.sortBy(keys);
+    const sortedKeys = _.union(_.keys(obj1), _.keys(obj2)).sort();
     const result = sortedKeys.map((key) => {
-        const value1 = obj1[key];
-        const value2 = obj2[key];
-        if (_.isObject(value1) && _.isObject(value2)) {
+        if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
             return { key, type: 'nested', children: getComparison(obj1[key], obj2[key]) };
         }
         if (!_.has(obj1, key)) {
-            return { key, type: 'added', value: value2 };
+            return { key, type: 'added', value: obj2[key] };
         }
         if (!_.has(obj2, key)) {
-            return { key, type: 'deleted', value: value1 };
+            return { key, type: 'deleted', value: obj1[key] };
         }
         if (_.has(obj1, key) && _.has(obj2, key)) {
-            if (value1 !== value2) {
-                return { key, type: 'changed', newValue: value1, oldValue: value2 };
+            if (obj1[key] !== obj2[key]) {
+                return { key, type: 'changed', newValue: obj1[key], oldValue: obj2[key] };
             }
         }
 
-        return { key, type: 'unchanged', value: value1 };
+        return { key, type: 'unchanged', value: obj1[key] };
     });
     return result;
 }

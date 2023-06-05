@@ -12,6 +12,9 @@ const formatter = (data, format) => {
         case 'json': {
             return json(data);
         }
+        default: {
+            return `Wrong formatter type ${format}`;
+        }
     }
 };
 export default formatter;

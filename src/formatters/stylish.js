@@ -4,7 +4,6 @@ const replacer = ' ';
 const doubleSpace = replacer.repeat(2);
 const spacesCount = 4;
 const space = (depth) => '    '.repeat(depth - 1);
-
 const getIndent = (depth) => replacer.repeat(depth * spacesCount).slice(0, -2);
 
 const stringify = (value, depth) => {
