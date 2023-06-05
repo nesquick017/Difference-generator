@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import parser from '../src/parser.js';
 import { test, expect } from '@jest/globals';
 import noFlat from '../__fixtures__/result.js';
+import plainRes from '../__fixtures__/plainResult.js';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
 
 const expectedPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.json');
@@ -34,4 +35,8 @@ test('getFixturePath should return the correct fixture path', () => {
 
 test('gendiff should make comapre follow formatter. by default stylish', () => {
     expect(genDifference('file1.json', 'file2.json')).toEqual(noFlat);
+});
+
+test('gendiff --format plain should return plain result', () => {
+    expect(genDifference('file1.json', 'file2.json', 'plain')).toEqual(plainRes);
 });
