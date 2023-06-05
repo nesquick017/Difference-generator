@@ -4,9 +4,8 @@ import yaml from 'js-yaml';
 import { fileURLToPath } from 'url';
 import parser from '../src/parser.js';
 import { test, expect } from '@jest/globals';
-import noFlat from '../__fixtures__/result.js';
-import plainRes from '../__fixtures__/plainResult.js';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
+import { resStylish, resJSON, resPlain } from '../__fixtures__/result.js';
 
 const expectedPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.json');
 const fileJson = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
@@ -33,10 +32,7 @@ test('getFixturePath should return the correct fixture path', () => {
     expect(getFixturePath('file1.json')).toBe(expectedPath);
 });
 
-test('gendiff should make comapre follow formatter. by default stylish', () => {
-    expect(genDifference('file1.json', 'file2.json')).toEqual(noFlat);
-});
-
 test('gendiff --format plain should return plain result', () => {
-    expect(genDifference('file1.json', 'file2.json', 'plain')).toEqual(plainRes);
+    expect(genDifference('file1.json', 'file2.json', 'plain')).toEqual(resPlain);
+    expect(genDifference('file1.json', 'file2.json')).toEqual(resStylish);
 });
