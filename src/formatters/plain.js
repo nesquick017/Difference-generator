@@ -5,7 +5,7 @@ const plain = (data) => {
         const result = obj.flatMap((el) => {
             switch (el.type) {
                 case 'nested': {
-                    return iter(el.children, [el.key], depth + 1);
+                    return iter(el.children, [...path, el.key], depth + 1);
                 }
                 case 'deleted': {
                     return `Property ${[...path, el.key].join('.')} was removed`;
@@ -23,6 +23,6 @@ const plain = (data) => {
         });
         return result.join('\n');
     };
-    return iter(data, [data.key], 1);
+    return iter(data, [], 1);
 };
 export default plain;
