@@ -2,7 +2,7 @@
     "name": "@hexlet/code",
     "version": "1.0.0",
     "type": "module",
-    "description": "difference generator",
+    "description": "[![Actions Status](https://github.com/worldspawn-web/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/worldspawn-web/frontend-project-46/actions)",
     "main": "src/index.js",
     "scripts": {
         "test": "jest"
