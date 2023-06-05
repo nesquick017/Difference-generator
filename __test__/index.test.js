@@ -32,7 +32,7 @@ test('getFixturePath should return the correct fixture path', () => {
     expect(getFixturePath('file1.json')).toBe(expectedPath);
 });
 
-test('gendiff --format plain should return plain result', () => {
+test('gendiff --format plain should return correct result depends on format', () => {
     expect(genDifference('file1.json', 'file2.json', 'plain')).toEqual(resPlain);
     expect(genDifference('file1.json', 'file2.json')).toEqual(resStylish);
 });
