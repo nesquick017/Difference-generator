@@ -15,18 +15,14 @@ make install
 ## Guideline:
 
 ```
-Usage: gendiff [options] <filepath1> <filepath2>
+  Usage: gendiff [options] <filepath1> <filepath2>
 
-Compares two configuration files and shows a difference.
+  Compares two configuration files and shows a difference.
 
-Arguments:
-  filepath1            path to file one
-  filepath2            path to file two
-
-Options:
-  -V, --version        output the version number
-  -f, --format <type>  output format (default: "stylish")
-  -h, --help           display help for command
+  Options:
+    -V, --version        output the version number
+    -h, --help           output usage information
+    -f, --format <type>  output format
 ```
 
 ## Video guideline:
