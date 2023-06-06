@@ -4,7 +4,7 @@ Output should be presented for you in _stylish_ (bu default) plain and json form
 
 ## How to install:
 Please do clone this repository and install Dependencies.
-You could could use the command belowe: 
+You could could use the command below: 
 ```
 make install
 ```
