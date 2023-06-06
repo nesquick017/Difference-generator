@@ -1,27 +1,27 @@
 {
-    "name": "@hexlet/code",
-    "version": "1.0.0",
-    "type": "module",
-    "description": "[![Actions Status](https://github.com/nesquick017/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions)",
-    "main": "src/index.js",
-    "bin": {
-        "gendiff": "bin/gendiff.js"
-    },
-    "scripts": {
-        "test": "jest"
-    },
-    "author": "nesquick",
-    "license": "ISC",
-    "devDependencies": {
-        "eslint": "^8.41.0",
-        "eslint-config-prettier": "^8.8.0",
-        "eslint-plugin-import": "^2.27.5",
-        "prettier": "2.8.8"
-    },
-    "dependencies": {
-        "commander": "^10.0.1",
-        "jest": "^29.5.0",
-        "js-yaml": "^4.1.0",
-        "lodash": "^4.17.21"
-    }
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[![Actions Status](https://github.com/nesquick017/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions)",
+  "main": "src/index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "nesquick",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "2.8.8"
+  },
+  "dependencies": {
+    "commander": "^10.0.1",
+    "jest": "^29.5.0",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21"
+  }
 }
