@@ -2,15 +2,12 @@
 import fs from 'fs';
 import path from 'path';
 import parser from './parser.js';
-import { fileURLToPath } from 'url';
 import formatter from './formatters/index.js';
 import getComparison from './comparer.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const getType = (filePath) => path.extname(filePath).slice(1);
-const getFile = (filePath) => fs.readFileSync(filePath, 'utf-8');
+const getFixturePath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const getFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
+const getType = (filepath) => path.extname(filepath).slice(1);
 export { getFile, getType, getFixturePath };
 
 export default function genDifference(fileName1, fileName2, format = 'stylish') {

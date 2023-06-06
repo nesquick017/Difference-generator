@@ -14,6 +14,7 @@ const parsedFileYaml = yaml.load(fileYaml);
 const expectedPathJSON = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.json');
 const expectedPathYml = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__', 'file1.yml');
 
+
 test('getType should give us a type of file depends on extension', () => {
     expect(getType('file1.yaml')).toEqual('yaml');
     expect(getType('file1.json')).toEqual('json');
