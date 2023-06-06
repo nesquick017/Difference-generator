@@ -5,6 +5,7 @@ Output should be presented for you in _stylish_ (bu default) plain and json form
 ## How to install:
 Please do clone this repository.\
 Then run dependencies.
+You could could use ```make install```
 
 ## Guideline:
 ```
