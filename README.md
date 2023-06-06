@@ -7,7 +7,18 @@ Please do clone this repository.\
 Then run dependencies.
 
 ## Guideline: 
-<img width="569" alt="Screen Shot 2023-06-05 at 21 12 40" src="https://github.com/nesquick017/frontend-project-46/assets/43905679/89c86593-00b9-496d-90bf-15342dab22d4">
+Usage: gendiff [options] <filepath1> <filepath2>
+
+Compares two configuration files and shows a difference.
+
+Arguments:
+  filepath1            path to file one
+  filepath2            path to file two
+
+Options:
+  -V, --version        output the version number
+  -f, --format <type>  output format (default: "stylish")
+  -h, --help           display help for command
 
   
 
