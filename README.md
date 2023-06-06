@@ -3,8 +3,7 @@ This is CLI utility wihich is provides the difference between yaml, yml, or json
 Output should be presented for you in _stylish_ (bu default) plain and json formats.
 
 ## How to install:
-Please do clone this repository.\
-Then run dependencies.
+Please do clone this repository and install Dependencies.
 You could could use the command belowe: 
 ```
 make install
