@@ -2,13 +2,25 @@
 This is CLI utility wihich is provides the difference between yaml, yml, or json files.\
 Output should be presented for you in _stylish_ (bu default) plain and json formats.
 
-## How to install: 
+## How to install:
+Usage: gendiff [options] <filepath1> <filepath2>
+
+Compares two configuration files and shows a difference.
+
+Arguments:
+  filepath1            path to file one
+  filepath2            path to file two
+
+Options:
+  -V, --version        output the version number
+  -f, --format <type>  output format (default: "stylish")
+  -h, --help           display help for command
 
 
 
 
 
-# Hexlet tests and linter status:
+### Hexlet tests and linter status:
 
 [![Actions Status](https://github.com/nesquick017/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions)
 
