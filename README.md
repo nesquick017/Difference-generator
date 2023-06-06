@@ -25,7 +25,7 @@ Options:
   -h, --help           display help for command
 ```
 ## Video guideline: 
-[![asciicast](https://asciinema.org/a/xsZfZAWP9fEbEycNNN0kkdXhU.svg)](https://asciinema.org/a/xsZfZAWP9fEbEycNNN0kkdXhU)
+<script async id="asciicast-xsZfZAWP9fEbEycNNN0kkdXhU" src="https://asciinema.org/a/xsZfZAWP9fEbEycNNN0kkdXhU.js"></script>
 
 ### Hexlet tests and linter status:
 
