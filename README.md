@@ -6,7 +6,8 @@ Output should be presented for you in _stylish_ (bu default) plain and json form
 Please do clone this repository.\
 Then run dependencies.
 
-## Guideline: 
+## Guideline:
+```
 Usage: gendiff [options] <filepath1> <filepath2>
 
 Compares two configuration files and shows a difference.
@@ -19,8 +20,7 @@ Options:
   -V, --version        output the version number
   -f, --format <type>  output format (default: "stylish")
   -h, --help           display help for command
-
-  
+```
 
 ### Hexlet tests and linter status:
 
