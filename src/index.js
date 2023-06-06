@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import fs from 'fs';
 import path from 'path';
 import parser from './parser.js';

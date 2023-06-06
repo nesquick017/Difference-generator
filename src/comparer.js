@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import _ from 'lodash';
 
 export default function getComparison(obj1, obj2) {
