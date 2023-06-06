@@ -1,8 +1,14 @@
-How to install:
+#Difference generator.
+This is CLI utility wihich is provides the difference between yaml, yml, or json files.
+Output should be presented for you in _stylish_ (bu default) plain and json formats.
+
+##How to install: 
 
 
 
-### Hexlet tests and linter status:
+
+
+# Hexlet tests and linter status:
 
 [![Actions Status](https://github.com/nesquick017/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions)
 
