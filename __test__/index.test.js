@@ -1,9 +1,9 @@
+import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { fileURLToPath } from 'url';
 import parser from '../src/parser.js';
-import { test, expect } from '@jest/globals';
 import { resStylish, resPlain, resJSON } from '../__fixtures__/result.js';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
 
