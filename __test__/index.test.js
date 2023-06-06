@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
@@ -15,13 +16,13 @@ const expectedPathJSON = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',
   '__fixtures__',
-  'file1.json'
+  'file1.json',
 );
 const expectedPathYml = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',
   '__fixtures__',
-  'file1.yml'
+  'file1.yml',
 );
 
 test('getType should give us a type of file depends on extension', () => {
@@ -41,13 +42,13 @@ test('getFixturePath should return the correct fixture path', () => {
 
 test('parser should give file depends on extension', () => {
   expect(parser(getFile(getFixturePath('file1.json')), getType('file1.json'))).toEqual(
-    parsedFileJson
+    parsedFileJson,
   );
   expect(parser(getFile(getFixturePath('file1.yaml')), getType('file1.yaml'))).toEqual(
-    parsedFileYaml
+    parsedFileYaml,
   );
   expect(parser(getFile(getFixturePath('file1.yml')), getType('file1.yml'))).toEqual(
-    parsedFileYaml
+    parsedFileYaml,
   );
 });
 

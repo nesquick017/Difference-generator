@@ -10,7 +10,9 @@ const stringify = (value, depth) => {
   if (!_.isPlainObject(value)) {
     return String(value);
   }
-  const lines = Object.entries(value).map(([key, val]) => `${getIndent(depth + 1)}${doubleSpace}${key}: ${stringify(val, depth + 1)}`);
+  const lines = Object.entries(value).map(
+    ([key, val]) => `${getIndent(depth + 1)}${doubleSpace}${key}: ${stringify(val, depth + 1)}`,
+  );
   return `{\n${lines.join('\n')}\n${getIndent(depth)}${doubleSpace}}`;
 };
 
@@ -24,13 +26,18 @@ export default function stylish(element, depth = 1) {
         return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
       }
       case 'changed': {
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.newValue, depth)}\n${getIndent(depth)}+ ${node.key}: ${stringify(node.oldValue, depth)}`;
+        return `${getIndent(depth)}- ${node.key}: ${stringify(node.newValue, depth)}\n${getIndent(
+          depth,
+        )}+ ${node.key}: ${stringify(node.oldValue, depth)}`;
       }
       case 'nested': {
         return `${getIndent(depth)}  ${node.key}: ${stylish(node.children, depth + 1)}`;
       }
       case 'unchanged': {
         return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, 1)}`;
+      }
+      default: {
+        return `wrong format ${node.type}`;
       }
     }
   });

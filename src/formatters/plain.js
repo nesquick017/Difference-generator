@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const complexValue = (value) => {
-  if (_.isObjectLike(value)) return `[complex value]`;
+  if (_.isObjectLike(value)) return '[complex value]';
   if (typeof value === 'string') return `'${value}'`;
   return `${value}`;
 };
@@ -17,12 +17,19 @@ const plain = (data) => {
           return `Property '${[...path, el.key].join('.')}' was removed`;
         }
         case 'added': {
-          return `Property '${[...path, el.key].join('.')}' was added with value: ${complexValue(el.value)}`;
+          return `Property '${[...path, el.key].join('.')}' was added with value: ${complexValue(
+            el.value,
+          )}`;
         }
         case 'changed': {
-          return `Property '${[...path, el.key].join('.')}' was updated. From ${complexValue(el.newValue)} to ${complexValue(el.oldValue)}`;
+          return `Property '${[...path, el.key].join('.')}' was updated. From ${complexValue(
+            el.newValue,
+          )} to ${complexValue(el.oldValue)}`;
         }
         case 'unchanged': {
+          return [];
+        }
+        default: {
           return [];
         }
       }

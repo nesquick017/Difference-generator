@@ -15,7 +15,9 @@ export default function getComparison(obj1, obj2) {
     }
     if (_.has(obj1, key) && _.has(obj2, key)) {
       if (obj1[key] !== obj2[key]) {
-        return { key, type: 'changed', newValue: obj1[key], oldValue: obj2[key] };
+        return {
+          key, type: 'changed', newValue: obj1[key], oldValue: obj2[key],
+        };
       }
     }
 
