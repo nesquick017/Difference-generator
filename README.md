@@ -1,10 +1,13 @@
-# Difference generator.
+## Difference generator.
 This is CLI utility wihich is provides the difference between yaml, yml, or json files.\
 Output should be presented for you in _stylish_ (bu default) plain and json formats.
 
 ## How to install:
 Please do clone this repository.\
 Then run dependencies.
+
+## Guideline: 
+Run gendiff -h for to get the usage information.
 
 ### Hexlet tests and linter status:
 
