@@ -14,7 +14,7 @@ const formatter = (data, format) => {
       return json(data);
     }
     default: {
-      return `Wrong formatter type ${format}`;
+      throw new Error(`Unknown type ${format}!`);
     }
   }
 };

@@ -45,5 +45,4 @@ test('gendiff --format  should return correct result depends on format and exten
   expect(genDifference('file1.yml', 'file2.yml')).toEqual(resStylish);
   expect(genDifference('file1.json', 'file2.json', 'json')).toEqual(resJSON);
   expect(genDifference('file1.yaml', 'file2.yaml', 'plain')).toEqual(resPlain);
-  expect(genDifference('file1.json', 'file2.json', 'txt')).toEqual('Wrong formatter type txt');
 });

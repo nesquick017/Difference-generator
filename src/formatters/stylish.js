@@ -37,7 +37,7 @@ export default function stylish(element, depth = 1) {
         return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, 1)}`;
       }
       default: {
-        return `wrong format ${node.type}`;
+        throw new Error(`Unknown type ${node.type}!`);
       }
     }
   });
