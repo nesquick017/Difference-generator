@@ -3,7 +3,6 @@ import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
-import { fileURLToPath } from 'url';
 import parser from '../src/parser.js';
 import { resStylish, resPlain, resJSON } from '../__fixtures__/result.js';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
@@ -12,18 +11,8 @@ const fileJson = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
 const fileYaml = fs.readFileSync(getFixturePath('file1.yaml'), 'utf-8');
 const parsedFileJson = JSON.parse(fileJson);
 const parsedFileYaml = yaml.load(fileYaml);
-const expectedPathJSON = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  '..',
-  '__fixtures__',
-  'file1.json',
-);
-const expectedPathYml = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  '..',
-  '__fixtures__',
-  'file1.yml',
-);
+const expectedPathJSON = path.resolve(process.cwd(), '__fixtures__', 'file1.json');
+const expectedPathYml = path.resolve(process.cwd(), '__fixtures__', 'file1.yml');
 
 test('getType should give us a type of file depends on extension', () => {
   expect(getType('file1.yaml')).toEqual('yaml');
