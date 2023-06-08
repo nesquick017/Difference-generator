@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
-export default function getComparison(obj1, obj2) {
+export default function buildTree(obj1, obj2) {
   const keys = _.union(_.keys(obj1), _.keys(obj2));
   const sortedKeys = _.sortBy(keys);
   const result = sortedKeys.map((key) => {
     if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-      return { key, type: 'nested', children: getComparison(obj1[key], obj2[key]) };
+      return { key, type: 'nested', children: buildTree(obj1[key], obj2[key]) };
     }
     if (!_.has(obj1, key)) {
       return { key, type: 'added', value: obj2[key] };
