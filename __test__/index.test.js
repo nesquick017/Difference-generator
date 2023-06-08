@@ -4,7 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import parser from '../src/parser.js';
-import { resStylish, resPlain, resJSON } from '../__fixtures__/result.js';
+import reultJSON from '../__fixtures__/result.JSON.js';
+import resultPlain from '../__fixtures__/result.plain.js';
+import resultStylish from '../__fixtures__/result.stylish.js';
 import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
 
 const fileJson = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
@@ -31,18 +33,18 @@ test('getFixturePath should return the correct fixture path', () => {
 
 test('parser should give file depends on extension', () => {
   expect(parser(getFile(getFixturePath('file1.json')), getType('file1.json'))).toEqual(
-    parsedFileJson,
+    parsedFileJson
   );
   expect(parser(getFile(getFixturePath('file1.yaml')), getType('file1.yaml'))).toEqual(
-    parsedFileYaml,
+    parsedFileYaml
   );
   expect(parser(getFile(getFixturePath('file1.yml')), getType('file1.yml'))).toEqual(
-    parsedFileYaml,
+    parsedFileYaml
   );
 });
 
 test('gendiff --format  should return correct result depends on format and extension', () => {
-  expect(genDifference('file1.yml', 'file2.yml')).toEqual(resStylish);
-  expect(genDifference('file1.json', 'file2.json', 'json')).toEqual(resJSON);
-  expect(genDifference('file1.yaml', 'file2.yaml', 'plain')).toEqual(resPlain);
+  expect(genDifference('file1.yml', 'file2.yml')).toEqual(resultStylish);
+  expect(genDifference('file1.json', 'file2.json', 'json')).toEqual(reultJSON);
+  expect(genDifference('file1.yaml', 'file2.yaml', 'plain')).toEqual(resultPlain);
 });
