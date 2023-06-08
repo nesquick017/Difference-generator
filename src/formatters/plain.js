@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const complexValue = (value) => {
-  if (_.isObjectLike(value)) return '[complex value]';
+  if (_.isObject(value)) return '[complex value]';
   if (typeof value === 'string') return `'${value}'`;
   return `${value}`;
 };
