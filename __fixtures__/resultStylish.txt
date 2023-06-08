@@ -1,4 +1,4 @@
-const resultStylish = `{
+{
     common: {
       + follow: false
         setting1: Value 1
@@ -41,5 +41,4 @@ const resultStylish = `{
         }
         fee: 100500
     }
-}`;
-export default resultStylish;
+}
