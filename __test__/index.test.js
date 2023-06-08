@@ -4,47 +4,22 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import parser from '../src/parser.js';
+import genDifference from '../src/index.js';
 import resultPlain from '../__fixtures__/resultPlain.js';
-import resultStylish from '../__fixtures__/resultStylish.js';
 import reultJSON from '../__fixtures__/resultJSON.js';
-import genDifference, { getFile, getType, getFixturePath } from '../src/index.js';
+import resultStylish from '../__fixtures__/resultStylish.js';
 
-const fileJson = fs.readFileSync(getFixturePath('file1.json'), 'utf-8');
-const fileYaml = fs.readFileSync(getFixturePath('file1.yaml'), 'utf-8');
-const parsedFileJson = JSON.parse(fileJson);
-const parsedFileYaml = yaml.load(fileYaml);
-const expectedPathJSON = path.resolve(process.cwd(), '__fixtures__', 'file1.json');
-const expectedPathYml = path.resolve(process.cwd(), '__fixtures__', 'file1.yml');
-
-test('getType should give us a type of file depends on extension', () => {
-  expect(getType('file1.yaml')).toEqual('yaml');
-  expect(getType('file1.json')).toEqual('json');
-});
-
-test('getFile should give us a proper file depends on extension', () => {
-  expect(getFile(getFixturePath('file1.json'))).toEqual(fileJson);
-  expect(getFile(getFixturePath('file1.yaml'))).toEqual(fileYaml);
-});
-
-test('getFixturePath should return the correct fixture path', () => {
-  expect(getFixturePath('file1.json')).toEqual(expectedPathJSON);
-  expect(getFixturePath('file1.yml')).toEqual(expectedPathYml);
-});
-
-test('parser should give file depends on extension', () => {
-  expect(parser(getFile(getFixturePath('file1.json')), getType('file1.json'))).toEqual(
-    parsedFileJson,
-  );
-  expect(parser(getFile(getFixturePath('file1.yaml')), getType('file1.yaml'))).toEqual(
-    parsedFileYaml,
-  );
-  expect(parser(getFile(getFixturePath('file1.yml')), getType('file1.yml'))).toEqual(
-    parsedFileYaml,
-  );
-});
+const getFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
+const getFixturePath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
 
 test('gendiff --format  should return correct result depends on format and extension', () => {
   expect(genDifference('file1.yml', 'file2.yml')).toEqual(resultStylish);
   expect(genDifference('file1.json', 'file2.json', 'json')).toEqual(reultJSON);
   expect(genDifference('file1.yaml', 'file2.yaml', 'plain')).toEqual(resultPlain);
+});
+
+test('parser should return correct file', () => {
+  expect(parser('file1.json')).toEqual(JSON.parse(getFile(getFixturePath('file1.json'))));
+  expect(parser('file1.yaml')).toEqual(yaml.load(getFile(getFixturePath('file1.yaml'))));
+  expect(parser('file1.yaml')).toEqual(yaml.load(getFile(getFixturePath('file1.yml'))));
 });

@@ -1,14 +1,22 @@
 import yaml from 'js-yaml';
+import path from 'path';
+import fs from 'fs';
 
-export default function parser(data, type) {
+const getFixturePath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const getFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
+const getType = (filepath) => path.extname(filepath).slice(1);
+
+export default function parser(filepath) {
+  const type = getType(filepath);
+  const file = getFile(getFixturePath(filepath));
   switch (type) {
     case 'json':
-      return JSON.parse(data);
+      return JSON.parse(file);
     case 'yml':
-      return yaml.load(data);
+      return yaml.load(file);
     case 'yaml':
-      return yaml.load(data);
+      return yaml.load(file);
     default:
-      throw new Error(`Unknown type ${data}!`);
+      throw new Error(`Unknown type ${file}!`);
   }
 }

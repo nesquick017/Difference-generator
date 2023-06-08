@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const replacer = ' ';
-const doubleSpace = replacer.repeat(2);
+const doubleSpace = '  ';
 const spacesCount = 4;
 const space = (depth) => '    '.repeat(depth - 1);
 const getIndent = (depth) => replacer.repeat(depth * spacesCount).slice(0, -2);
@@ -18,7 +18,8 @@ const stringify = (value, depth) => {
 
 export default function stylish(element, depth = 1) {
   const result = element.map((node) => {
-    switch (node.type) {
+    const { type } = node;
+    switch (type) {
       case 'deleted': {
         return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
       }
