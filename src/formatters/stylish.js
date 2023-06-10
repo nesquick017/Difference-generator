@@ -18,27 +18,29 @@ const stringify = (value, depth) => {
 
 export default function stylish(element, depth = 1) {
   const result = element.map((node) => {
-    const { type } = node;
+    const {
+      type, key, value, oldValue, newValue, children,
+    } = node;
     switch (type) {
       case 'deleted': {
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getIndent(depth)}- ${key}: ${stringify(value, depth)}`;
       }
       case 'added': {
-        return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
+        return `${getIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
       }
       case 'changed': {
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.newValue, depth)}\n${getIndent(
+        return `${getIndent(depth)}- ${key}: ${stringify(newValue, depth)}\n${getIndent(
           depth,
-        )}+ ${node.key}: ${stringify(node.oldValue, depth)}`;
+        )}+ ${key}: ${stringify(oldValue, depth)}`;
       }
       case 'nested': {
-        return `${getIndent(depth)}  ${node.key}: ${stylish(node.children, depth + 1)}`;
+        return `${getIndent(depth)}  ${key}: ${stylish(children, depth + 1)}`;
       }
       case 'unchanged': {
-        return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, 1)}`;
+        return `${getIndent(depth)}  ${key}: ${stringify(value, 1)}`;
       }
       default: {
-        throw new Error(`Unknown type ${node.type}!`);
+        throw new Error(`Unknown type ${type}!`);
       }
     }
   });
