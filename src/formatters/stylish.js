@@ -3,7 +3,6 @@ import _ from 'lodash';
 const replacer = ' ';
 const doubleSpace = '  ';
 const spacesCount = 4;
-const space = (depth) => '    '.repeat(depth - 1);
 const getIndent = (depth) => replacer.repeat(depth * spacesCount).slice(0, -2);
 
 const stringify = (value, depth) => {
@@ -44,5 +43,5 @@ export default function stylish(element, depth = 1) {
       }
     }
   });
-  return `{\n${result.join('\n')}\n${space(depth)}}`;
+  return `{\n${result.join('\n')}\n${getIndent(depth).slice(2)}}`;
 }
