@@ -27,16 +27,16 @@ export default function stylish(element, depth = 1) {
       case 'added': {
         return `${getIndent(depth)}+ ${key}: ${stringify(value, depth)}`;
       }
+      case 'unchanged': {
+        return `${getIndent(depth)}${doubleSpace}${key}: ${stringify(value, 1)}`;
+      }
       case 'changed': {
         return `${getIndent(depth)}- ${key}: ${stringify(newValue, depth)}\n${getIndent(
           depth,
         )}+ ${key}: ${stringify(oldValue, depth)}`;
       }
       case 'nested': {
-        return `${getIndent(depth)}  ${key}: ${stylish(children, depth + 1)}`;
-      }
-      case 'unchanged': {
-        return `${getIndent(depth)}  ${key}: ${stringify(value, 1)}`;
+        return `${getIndent(depth)}${doubleSpace}${key}: ${stylish(children, depth + 1)}`;
       }
       default: {
         throw new Error(`Unknown type ${type}!`);
