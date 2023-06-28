@@ -30,7 +30,6 @@ Options:
 [![asciicast](https://asciinema.org/a/xsZfZAWP9fEbEycNNN0kkdXhU.svg)](https://asciinema.org/a/xsZfZAWP9fEbEycNNN0kkdXhU)
 
 ### Hexlet tests and linter status:
-
 [![Actions Status](https://github.com/nesquick017/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions) 
 [![project-check](https://github.com/nesquick017/frontend-project-46/actions/workflows/pr2.yaml/badge.svg)](https://github.com/nesquick017/frontend-project-46/actions/workflows/pr2.yaml)
 <a href="https://codeclimate.com/github/nesquick017/frontend-project-46_2june/maintainability"><img src="https://api.codeclimate.com/v1/badges/d48f478d0ae610217832/maintainability" />
