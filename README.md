@@ -1,7 +1,10 @@
 ## Difference generator.
 
-This is CLI utility wihich is provides the difference between yaml, yml, or json files.\
-Output should be presented for you in _stylish_ (bu default) plain and json formats.
+This CLI utility is designed to compare JSON or YAML documents. It provides a comprehensive analysis of the differences between the files, taking into account their hierarchical structure.
+
+Using this utility, users can get comparison results in a variety of formats, including TXT, JSON, and my own stylized format called "stylish". All options output the difference to the console, so if you want to save the result you can use the utility in pipeline with touch. The stylish format, inspired by JSON.stringify, presents differences with a minimum number of characters and consistent indentation, resulting in visually pleasing output in the console. This format was my default.
+
+Using this utility, users can easily identify and understand changes made to JSON or YAML documents and gain insight into the complex tree structure of the data. It facilitates efficient change management and tracking, improving the overall handling of JSON or YAML files.
 
 ## How to install:
 
